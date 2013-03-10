@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+<title>News</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<style type="text/css">
+body {font-size:25px;background:#e2e2e2; width:100%; height:100%; overflow: hidden; margin:0 auto; text-align:center;-webkit-text-size-adjust:none;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;}
+.nav {width:200px; text-align: left; margin:40px; padding:20px; background:#ccc; border-radius:10px;}
+.nav a {display:block; font-size:16px; margin:10px 0;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+	<a href="javascript:void(0);" onclick="demo_1()">Demo 1 GET - 404</a>
+	<a href="javascript:void(0);" onclick="demo_2()">Demo 2 GET - 200</a>
+	<a href="javascript:void(0);" onclick="demo_3()">Demo 3 POST - 200</a>
+	<a href="javascript:void(0);" onclick="demo_4()">Demo 4 POST JSON - 200</a>
+
+</div>
+
+
+<div id="console"></div>
+<script src="./ajax.js"></script>
+<script>
+	var OUT = document.getElementById("console");
+
+	//-- demo 1
+	var demo_1 = function(){
+		OUT.innerHTML = "";
+
+		var a = new AJAX({
+			//"method": "GET", //optional. GET is default
+			"url": "/test/fake",
+			"onSuccess": function(res){
+				OUT.innerHTML = res;
+			}			
+		});
+	};
+
+
+	//-- demo 2
+	var demo_2 = function(){
+		OUT.innerHTML = "";
+		
+		var a = new AJAX({
+			"method": "GET",
+			"url": "/test/b.js",
+			"onSuccess": function(res){
+				OUT.innerHTML = JSON.stringify(res);
+			}			
+		});
+	};
+	//--
+
+	//-- demo 3
+	var demo_3 = function(){
+		OUT.innerHTML = "";
+		
+		var a = new AJAX({
+			"method": "POST",
+			"url": "/test/b.js",
+			"data": "artist=jz&lyrics=true",
+			"onSuccess": function(res){
+				OUT.innerHTML = JSON.stringify(res);
+			}			
+		});
+	};
+	//--
+
+	//-- demo 4
+	var demo_4 = function(){
+		OUT.innerHTML = "";
+		
+		var a = new AJAX({
+			"method": "POST",
+			"url": "/test/b.js",
+			"contentType": "application/json",
+			"data": {"artist": "jz", "lyrics": true},
+			"onSuccess": function(res){
+				OUT.innerHTML = JSON.stringify(res);
+			}			
+		});
+	};
+	//--
+
+
+
+
+
+</script>
+</body>
+<html>
