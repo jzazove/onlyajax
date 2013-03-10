@@ -1,4 +1,6 @@
-function AJAX(j){
+(function(){
+window.AJAX = window.AJAX || {};
+window.AJAX = function(j){
 	this.globalError = function(code){
 		var txt = (code === 404) ? "404 Not Found" : "Oh dear.  Something is very wrong";
 		alert(txt);
@@ -76,3 +78,4 @@ AJAX.prototype.getResponse = function(j) {
 AJAX.prototype.getxmlhttpObj = function() {
 	return (window.XMLHttpRequest) ? new XMLHttpRequest() : ((window.ActiveXObject) ? new ActiveXObject("Microsoft.XMLHTTP") : null); 
 };
+})();
