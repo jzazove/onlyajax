@@ -25,7 +25,7 @@ window.AJAX = function(j){
 	if(j.hasOwnProperty("method") && j.method === "POST"){
 		this.postRequest(j);
 	} else {
-		this.getRequest(j)
+		this.getRequest(j);
 	}
 
 };
@@ -44,7 +44,7 @@ AJAX.prototype.postRequest = function(j){
 	this.xmlhttp.setRequestHeader("Content-type", ct);
 	this.xmlhttp.onreadystatechange = (function(b){
 		return function(){
-			b;
+			return b;
 		};
 	})(this.checkResponse(j));
 	this.xmlhttp.send(post_data);
@@ -54,7 +54,7 @@ AJAX.prototype.getRequest = function(j){
 	this.xmlhttp.open("GET", j.url, true); 
 	this.xmlhttp.onreadystatechange = (function(b){
 		return function(){
-			b;
+			return b;
 		};
 	})(this.checkResponse(j));
 	this.xmlhttp.send(null);
@@ -63,9 +63,9 @@ AJAX.prototype.checkResponse = function(j){
 	var self = this;
 	var t; 
 	if (this.xmlhttp.readyState !== 4) {
-		t = setTimeout(function(){self.checkResponse(j)}, 20)
+		t = setTimeout(function(){self.checkResponse(j);}, 20);
 	} else {
-		this.getResponse(j)
+		this.getResponse(j);
 	}; 
 }; 
 AJAX.prototype.getResponse = function(j) { 
