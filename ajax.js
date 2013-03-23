@@ -34,7 +34,7 @@ AJAX.prototype.postRequest = function(j){
 	var post_data = j.data;
 	if(j.hasOwnProperty("contentType")){
 		 ct = j.contentType;
-		 if(ct.indexOf("application/json") !== -1){
+		 if(ct.match(/application\/json/)){
 		 	post_data = JSON.stringify(j.data);
 		 }
 	};
